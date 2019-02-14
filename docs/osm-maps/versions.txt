@@ -1,0 +1,25 @@
+--------------------------------------------------------------------------------
+
+OpenStreet Maps (Geofabrik's)
+Files used in this project
+as of 2018-12-07
+
+Source http://download.geofabrik.de/index.html
+
+SPAIN: spain-latest.osm.pbf
+Contains all OSM data up to 2018-12-05 21:14:02 
+File size: 691 MB 
+
+BERLIN: berlin-latest.osm.pbf
+Contains all OSM data up to 2018-12-05 21:14:02 
+File size: 51 MB
+
+NEW-YORK: new-york-latest.osm.pbf
+Contains all OSM data up to 2018-12-05 21:14:02
+File size: 186 MB
+
+BRAZIL: brazil-latest.osm.pbf
+Contains all OSM data up to 2018-12-05 21:14:02
+File size: 623 MB
+
+--------------------------------------------------------------------------------
