@@ -256,13 +256,6 @@ depots = copy.deepcopy(DEPOTS)
 
 seed = 2
 cgens = set()
-# while len(cgens) < 216:
-# 	seed+=1
-# 	if seed % 100 == 0:
-# 		print seed
-# 	cgens.clear()
-# 	random.seed(seed)
-# 	stat,clst = generate_configurations(cities, distributions, horizons, time_windows, capacities, depots, NUM_INST_SIZE)
 
 random.seed(seed)
 stat,clst = generate_configurations(cities, distributions, horizons, time_windows, capacities, depots, NUM_INST_SIZE)
@@ -270,11 +263,7 @@ stat,clst = generate_configurations(cities, distributions, horizons, time_window
 	
 #write_configuration_table(clst)
 write_configuration_stats(stat, seed)
-#write_all_config_files(clst)
-
-# print len(cgens)
-# print seed
-# print len(clst)
+write_all_config_files(clst)
 
 
 

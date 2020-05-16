@@ -10,4 +10,26 @@ The project uses Open Street Maps (OSM) from [Geofabrik](http://download.geofabr
 
 The project is thought to be open source, so that anyone interested can contribute to its development, and ideally contribute to the large VRP community. It is developed in `C++` to easily integrate with the OSRM tool. However, the code is currently chaotic (at best!) and I still have to find the time to organize and comment things further. 
 
-So far, it should compile once all required packages are installed. The `scripts` can generate the configuration files and the instances of the PDPTW that the tool was primarily developed for. More information about the instances can be found [here](https://github.com/cssartori/pdptw-instances)
+## Compiling
+
+So far, the code should compile once all required packages are installed. Other than the basic `C++` compiler (compatible with `C++14`), it is necessary to compile from source and install OSRM, which is easily done by following their guide for *Building from Source*. Once all these dependencies are installed, it is enough to run `make` from the OVIG folder.
+
+## Running
+
+To run the instance generator, one should have a *configuration* text file ready. Then, it is just necessary to call:
+
+```sh
+./main -c conf.txt
+```
+
+Assuming your configuration file is `conf.txt`. For other options, you may run
+
+```sh
+./main -h
+```
+
+# Configuration files
+
+To correctly generate an instance a *configuration file* is required, which contains the characteristics desired for the resulting instance. An example is available at `configurations/bar-n100-1.txt`, which may be used to generate an instance in Barcelona containing 100 locations (plus the depot).
+
+The `scripts` can generate the configuration files and the instances for the PDPTW that the tool was primarily developed for. More information about the instances can be found [here](https://github.com/cssartori/pdptw-instances)
