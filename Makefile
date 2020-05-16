@@ -6,7 +6,6 @@ CXXFLAGS = -Wall -O3 -std=c++14
 
 #location of files and libraries to be used
 OSRM_DIR = ../osrm-backend/
-#GDAL_DIR = ../gdal-2.3.0/
 
 SRCDIR = src/
 INCDIR = include/

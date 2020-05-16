@@ -36,6 +36,8 @@ void Router::route(const std::vector<GeoLocation>& locations, std::vector< std::
 }
 
 void triangular_inequality(std::vector< std::vector<double> >& matrix){
+	//if there is any inconsistency regarding triangular inequality, correct it
+	// times/durations should always respect the triangular inequality for most VRP techniques that deal with time (windows)
 	for(size_t i=0;i<matrix.size();i++){
 		for(size_t j=0;j<matrix.size();j++){
 			for(size_t k=0;k<matrix.size();k++){
@@ -50,22 +52,30 @@ void Router::table_route(const std::vector<GeoLocation> &locations, std::vector<
 	for(GeoLocation loc : locations){
 		params.coordinates.push_back({osrm::util::FloatLongitude{loc.lon}, osrm::util::FloatLatitude{loc.lat}});
 	}
+
+	//make it return duration
+	params.annotations = osrm::TableParameters::AnnotationsType::Duration;
 	
-	osrm::json::Object result;
+	osrm::engine::api::ResultT result;
 	const auto status = osrm->Table(params, result);
+	auto& rjson = result.get<osrm::json::Object>();
+	
 	if (status == osrm::Status::Ok){
-		auto &mat = result.values["durations"].get<osrm::json::Array>();
+		auto &times = rjson.values["durations"].get<osrm::json::Array>();
+
 		for(size_t i=0;i<locations.size();i++){
 			for(size_t j=0;j<locations.size();j++){
-				if(i == j) continue;
-				auto &row = mat.values.at(i).get<osrm::json::Array>();
+				if(i == j) continue; //avoid getting any possible trash value (apparantly it happens)
+				auto &row = times.values.at(i).get<osrm::json::Array>();
+				
+				//transfor duration[i][j] from seconds to minutes (integer values)
 				matrix[i][j] = std::max(0.0, std::ceil(row.values.at(j).get<osrm::json::Number>().value/60.0));
 			}
 		}
 	}else if (status == osrm::Status::Error){
 		//TODO: check what to do in case of error
-		const auto code = result.values["code"].get<osrm::json::String>().value;
-		const auto message = result.values["message"].get<osrm::json::String>().value;			
+		const auto code = rjson.values["code"].get<osrm::json::String>().value;
+		const auto message = rjson.values["message"].get<osrm::json::String>().value;			
 		std::cout << "Code: " << code << "\n";
 		std::cout << "Message: " << code << "\n";
 		throw "Dead end error.\n";
