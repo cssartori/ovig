@@ -67,7 +67,7 @@ Creating the instance file `ipdptw-n100-ber.txt` inside the `build/` directory.
 For more options, you may run:
 
 ```sh
-./main -h
+./ovig -h
 ```
 
 ## Code
