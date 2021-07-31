@@ -304,8 +304,10 @@ bool has_everything(const checker_t& ch, const Configurations& con){
 		misst = Constants::STR_CON_DENSITY;
 		//not required
 	}else if(not ch.route_time){
-		misst = Constants::STR_CON_ROUTE_TIME;
-		required = true;
+		if(con.type != InstanceType::CVRP){
+			misst = Constants::STR_CON_ROUTE_TIME;
+			required = true;
+		}
 	}else if(not ch.capacity){
 		misst = Constants::STR_CON_CAPACITY;
 		required = true;
@@ -313,11 +315,15 @@ bool has_everything(const checker_t& ch, const Configurations& con){
 		misst = Constants::STR_CON_DEPOT;
 		required = true;
 	}else if(not ch.time_window){
-		misst = Constants::STR_CON_TIME_WINDOW;
-		required = true;
+		if(con.type != InstanceType::CVRP){
+			misst = Constants::STR_CON_TIME_WINDOW;
+			required = true;
+		}
 	}else if(not ch.service){
-		misst = Constants::STR_CON_SERV_TIME;
-		required = true;
+		if(con.type != InstanceType::CVRP){
+			misst = Constants::STR_CON_SERV_TIME;
+			required = true;
+		}
 	}else if(not ch.osrm){
 		misst = Constants::STR_CON_OSRM_FILE;
 		required = true;

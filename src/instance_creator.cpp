@@ -66,7 +66,7 @@ namespace InstanceCreator{
 		
 		if(con.verbose >= 2){
 			if(con.verbose >= 3){
-				printf("Matrix triangular: %s\n", holds_triangular(distances) == 0 ? "true" : "false");
+				printf("Matrix triangular: %s\n", (holds_triangular(distances) == 0) ? "true" : "false");
 				int assm = is_assymmetric(distances);
 				printf("Matrix assymmetric: %f (total = %i)\n", assm*100.0/(0.5*distances.size()*distances.size()-distances.size()), assm);
 			}

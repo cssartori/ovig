@@ -37,8 +37,8 @@ int main(int argc, char** argv){
 	FileCode rwrite = Instance::write_instance_file(con.inst_file, inst);
 	ret = rwrite == FileCode::WriteError ? EXIT_FAILURE : EXIT_SUCCESS;
 	if(ret != EXIT_FAILURE && con.verbose >= 1) printf("DONE: Instance written to file.\n");
-	
-    return ret;
+
+	return ret;
 }
 
 void read_parameters(int argc, char** argv, Configurations& con){
@@ -51,8 +51,8 @@ void read_parameters(int argc, char** argv, Configurations& con){
 	po::options_description desc("parameters");
 	desc.add_options()
 		("help,h", "print this help info")
-		("configuration,c", po::value<std::string>(&configuration_file),
-		 ("Configuration file to read the parameters. Default: " + DEFAULT_CONFIG_FILE).c_str())
+		("configuration,c", po::value<std::string>(&configuration_file)->required(),
+		 ("Configuration file to read the parameters."))
 		("output,o", po::value<std::string>(&con.inst_file),
 		 ("output file where the generated instance will be recorded. Default: " + DEFAULT_INST_FILE).c_str())
 		("seed,s", po::value<size_t>(&temp_seed),
@@ -62,13 +62,13 @@ void read_parameters(int argc, char** argv, Configurations& con){
 		; 
 
 	po::variables_map vm;
-    po::store(po::parse_command_line(argc, argv, desc), vm);
-	po::notify(vm); // seems to be what put the read values in the variables
-
+	po::store(po::parse_command_line(argc, argv, desc), vm);
 	if (vm.count("help")) {
 		std::cout << desc << std::endl;
 		exit(EXIT_SUCCESS);
 	}
+
+	po::notify(vm);
 	
 	if(con.verbose >= 1) printf("Opening configuration file %s...\n", configuration_file.c_str());
 	std::ifstream cfile(configuration_file);
