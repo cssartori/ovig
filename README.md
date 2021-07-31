@@ -4,7 +4,7 @@ The OVIG tool was designed to generate Vehicle Routing Problem (VRP) instances b
 
 Originally, the OVIG was implemented to generate instances for a VRP variant known as the *Pickup and Delivery Problem with Time Windows* (PDPTW). The description of the method used by the tool and the reasoning behind it can be found as part of a [scientific paper](https://doi.org/10.1016/j.cor.2020.105065) published in the journal *Computers & Operations Research* (2020), as well as part of the Masters' thesis in Computer Science (2019) available [here](https://www.lume.ufrgs.br/handle/10183/194380).
 
-Despite its original intent, the project can be extended to accomodate other VRP variants, such as the *Capacitated Vehicle Routing Problem* (CVRP), the *Vehicle Routing Problem with Time Windows* (VRPTW), and the *Pickup and Delivery Problem* (PDP). Currently, OVIG can produce instances for the CVRP and PDPTW. The addition of other instance types is still open and may receive contributions of interested users.
+Despite its original intent, the project can be extended to accomodate other VRP variants, such as the *Capacitated Vehicle Routing Problem* (CVRP), the *Vehicle Routing Problem with Time Windows* (VRPTW), and the *Pickup and Delivery Problem* (PDP). Currently, OVIG can produce instances for the CVRP and PDPTW. The addition of other instance types is still open and may receive contributions from interested users.
 
 The figures below illustrate three instances generated using OVIG. All of them have 100 locations selected using different types of probability distributions. Barcelona and Denmark are `random` while Berlin is `cluster-random`. Note that in all instances, the customer distribution still follows an underlying unspecified function due to how the data is provided. For example, locations in Barcelona are mostly distributed within an ellipsoid between two very unpopulated areas (of land and sea). Images generated using [GPSVisualizer](https://www.gpsvisualizer.com/).
 
@@ -74,3 +74,21 @@ For more options, you may run:
 
 The project is completely open source, so anyone interested can contribute to its development and to the VRP community. It is developed in `C++` to easily integrate with the OSRM tool. However, the code currently lacks some documentation and new features. If you are interested in contributing, some enhancement proposals may be found in this repository. 
 
+## Citation
+
+When using OVIG in publications, please consider citing
+```
+@mastersthesis{sartori-pdptw-2019,
+    author = {Carlo S. Sartori},
+    institution = {Universidade Federal do Rio Grande do Sul},
+    pages = 101,
+    school = {Universidade Federal do Rio Grande do Sul},
+    title = {The pickup and delivery problem with time windows: algorithms, instances, and solutions},
+    note = {Available online at: \url{https://www.lume.ufrgs.br/handle/10183/194380}},
+    year = 2019
+}
+```
+
+## Contact
+
+In case of questions concerning OVIG, you may contact me through: cssartori `at` inf  `dot` ufrgs `dot` br
