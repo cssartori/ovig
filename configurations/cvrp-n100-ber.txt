@@ -1,0 +1,12 @@
+NAME: cvrp-n100-ber
+SIZE: 101
+DISTRIBUTION: random
+NODE-FILE: ../addresses/berlin/berlin.txt
+DEPOT: random
+CAPACITY: 20
+SEED: 2021
+OSRM-FILE: ../../osm/berlin-latest.osrm
+TYPE: CVRP
+LOCATION: Berlin
+COMMENT: Sartori and Buriol (2019)
+EOF

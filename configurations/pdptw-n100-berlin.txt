@@ -1,0 +1,17 @@
+NAME: pdptw-n100-ber
+SIZE: 101
+DISTRIBUTION: cluster-random
+CLUSTERS: 3
+DENSITY: 1.2
+NODE-FILE: ../addresses/berlin/berlin.txt
+TIME-WINDOW: 60
+SERVICE-TIME: 5
+DEPOT: random
+ROUTE-TIME: 480
+CAPACITY: 100
+SEED: 2019
+OSRM-FILE: ../../osm/berlin-latest.osrm
+TYPE: PDPTW
+LOCATION: Berlin
+COMMENT: Sartori and Buriol (2019)
+EOF
