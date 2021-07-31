@@ -6,6 +6,14 @@ Originally, the OVIG was implemented to generate instances for a VRP variant kno
 
 Despite its original intent, the project can be extended to accomodate other VRP variants, such as the *Capacitated Vehicle Routing Problem* (CVRP), the *Vehicle Routing Problem with Time Windows* (VRPTW), and the *Pickup and Delivery Problem* (PDP). Currently, OVIG can produce instances for the CVRP and PDPTW. The addition of other instance types is still open and may receive contributions of interested users.
 
+The figures below illustrate three instances generated using OVIG. All of them have 100 locations selected using different types of probability distributions. Barcelona and Denmark are `random` while Berlin is `cluster-random`. Note that in all instances, the customer distribution still follows an underlying unspecified function due to how the data is provided. For example, locations in Barcelona are mostly distributed within an ellipsoid between two very unpopulated areas (of land and sea). Images generated using [GPSVisualizer](https://www.gpsvisualizer.com/).
+
+| <img src="https://github.com/cssartori/ovig/blob/master/docs/figures/fig_barcelona.png" width="300" height="300"> | <img src="https://github.com/cssartori/ovig/blob/master/docs/figures/fig_berlin.png" width="300" height="300"> | <img src="https://github.com/cssartori/ovig/blob/master/docs/figures/fig_denmark.png" width="300" height="300">
+|:--:|:--:|:--:|
+| *Barcelona* | *Berlin* | *Denmark*| 
+
+
+
 ## Building
 
 **Prerequesits:** Here is a list of what needs to be done *before* compiling OVIG.
