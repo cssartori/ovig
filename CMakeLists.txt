@@ -43,6 +43,7 @@ set( OvigSrcFiles
   ${PROJECT_SOURCE_DIR}/src/instance_creator.cpp
   ${PROJECT_SOURCE_DIR}/src/main.cpp
   ${PROJECT_SOURCE_DIR}/src/pdptw_builder.cpp
+  ${PROJECT_SOURCE_DIR}/src/vrptw_builder.cpp
   ${PROJECT_SOURCE_DIR}/src/router.cpp
   )
 

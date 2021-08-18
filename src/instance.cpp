@@ -11,6 +11,7 @@ using namespace std;
 
 void write_edge_matrix(const std::vector< std::vector<double> >& matrix, ofstream& file);
 void write_pdptw_instance(const Instance& inst, ofstream& file);
+void write_vrptw_instance(const Instance& inst, ofstream& file);
 void write_cvrp_instance(const Instance& inst, ofstream& file);
 
 // convert double value to string according to precision
@@ -26,6 +27,7 @@ FileCode Instance::write_instance_file(const std::string& filename, const Instan
 
 	if(inst.type == InstanceType::PDPTW) write_pdptw_instance(inst, file);
 	else if(inst.type == InstanceType::CVRP) write_cvrp_instance(inst, file);
+    else if(inst.type == InstanceType::VRPTW) write_vrptw_instance(inst, file);
 	
 	return FileCode::WriteOk;
 }
@@ -61,6 +63,37 @@ void write_pdptw_instance(const Instance& inst, ofstream& file){
 
 	file << "EOF";
 }
+
+
+void write_vrptw_instance(const Instance& inst, ofstream& file){
+	file << "NAME: " << inst.name << endl;
+	if(inst.location.size() > 0) file << "LOCATION: " << inst.location << endl;
+	file << "COMMENT: " << inst.comment << endl;
+	file << "TYPE: " << type_to_string(inst.type) << endl;
+	file << "SIZE: " << inst.size << endl;
+	file << "DISTRIBUTION: " << type_to_string(inst.dist_type);
+	if(inst.dist_type != NodeDistribution::Random)
+		file << " (" << inst.nclusters << " / " << inst.density << ")";
+	file << endl;
+	file << "DEPOT: " << type_to_string(inst.depot) << endl;
+	file << "ROUTE-TIME: " << inst.max_route_time << endl;
+	file << "TIME-WINDOW: " << inst.time_window << endl;
+	file << "CAPACITY: " << inst.max_capacity << endl;
+	file << "NODES" << endl;
+
+	for(size_t i=0;i<inst.nodes.size();i++){
+		file << i << " ";
+		file << dtos(inst.nodes[i].loc.lat, 8) << " " << dtos(inst.nodes[i].loc.lon,8) << " ";
+		file << inst.nodes[i].demand << " ";
+		file << floor(inst.nodes[i].etw) << " " << floor(inst.nodes[i].ltw) << " " << inst.nodes[i].stw << " ";
+		file << endl;
+	}
+
+	write_edge_matrix(inst.matrix, file);
+
+	file << "EOF";
+}
+
 
 void write_cvrp_instance(const Instance& inst, ofstream& file){	
 	file << "NAME: " << inst.name << endl;

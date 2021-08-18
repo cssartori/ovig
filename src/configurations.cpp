@@ -184,7 +184,7 @@ FileCode read_type(struct Configurations& con, std::istream& f){
 	
 	f >> dummy;
 	con.type = string_to_type1(dummy);
-	if(con.type != InstanceType::PDPTW and con.type != InstanceType::CVRP){
+	if(con.type != InstanceType::PDPTW and con.type != InstanceType::CVRP and con.type != InstanceType::VRPTW){
 		printf("Unknown instance type \"%s\"\n", dummy.c_str());
 		result = FileCode::ReadError;
 	}

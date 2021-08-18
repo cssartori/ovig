@@ -63,10 +63,14 @@ namespace InstanceCreator{
 		std::vector< std::vector<double> > distances(locations.size(), std::vector<double>(locations.size(), 0));
 		Router router(con.osrm_file);
 		router.route(locations, distances);
-		
+
+        if(holds_triangular(distances) != 0){
+            printf("WARNING: matrix is not triangular.\n");
+        }
+
 		if(con.verbose >= 2){
 			if(con.verbose >= 3){
-				printf("Matrix triangular: %s\n", (holds_triangular(distances) == 0) ? "true" : "false");
+				//printf("Matrix triangular: %s\n", (holds_triangular(distances) == 0) ? "true" : "false");
 				int assm = is_assymmetric(distances);
 				printf("Matrix assymmetric: %f (total = %i)\n", assm*100.0/(0.5*distances.size()*distances.size()-distances.size()), assm);
 			}

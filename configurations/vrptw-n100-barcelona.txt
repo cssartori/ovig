@@ -1,0 +1,15 @@
+NAME: vrptw-n100-bar
+SIZE: 101
+DISTRIBUTION: random
+NODE-FILE: ../addresses/barcelona/barcelona.txt
+TIME-WINDOW: 60
+SERVICE-TIME: 30
+DEPOT: random
+ROUTE-TIME: 1200
+CAPACITY: 200
+SEED: 1
+OSRM-FILE: ../../osm/spain-latest.osrm
+TYPE: VRPTW
+LOCATION: Barcelona
+COMMENT: Sartori, Smet and Vanden Berghe (2021)
+EOF

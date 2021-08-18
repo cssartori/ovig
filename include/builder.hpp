@@ -21,6 +21,10 @@ namespace Builder{
 		int build(const Configurations& con, std::vector<Node>& nodes, std::vector< std::vector< double > >& matrix, Instance& inst);
 	};
 
+	namespace VRPTW{
+		int build(const Configurations& con, const std::vector<GeoLocation>& locations, std::vector< std::vector< double > >& matrix, Instance& inst);
+	};
+
 	namespace CVRP{
 		//for now, there is only one build method for the CVRP
 		int build(const Configurations& con, const std::vector<GeoLocation>& locations, std::vector< std::vector< double > >& matrix, Instance& inst);
